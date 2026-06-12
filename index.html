@@ -1,0 +1,1440 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5">
+<title>Montejano — Automação · Dados</title>
+<meta name="description" content="Transformamos operações confusas em processos simples. Automação, dados e sistemas para pequenas e médias empresas em todo o Brasil.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#111111">
+
+<!-- SEGURANÇA: CSP, Headers de segurança via meta (complemento ao servidor) -->
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+<meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=()">
+<!-- CSP: permite apenas fontes Google e nenhum script inline externo não autorizado -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://wa.me; frame-ancestors 'none';">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Montejano — Automação · Dados">
+<meta property="og:description" content="Transformamos operações confusas em processos simples. Sem enrolação. Só resultado.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://montejanotecnologias.com.br">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital@1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --preto: #111111;
+    --grafite: #2A2A2A;
+    --bordo: #6B1A1A;
+    --amarelo: #E8C547;
+    --offwhite: #F0EDE8;
+    --fonte-titulo: 'Bebas Neue', sans-serif;
+    --fonte-elegante: 'Playfair Display', serif;
+    --fonte-corpo: 'DM Sans', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--preto);
+    color: var(--offwhite);
+    font-family: var(--fonte-corpo);
+    font-weight: 400;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Crect width='4' height='4' fill='%23111111'/%3E%3Crect x='0' y='0' width='1' height='1' fill='%231a1a1a' opacity='0.4'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── NAVBAR ── */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    padding: 1.2rem 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(17,17,17,0.95);
+    border-bottom: 1px solid rgba(107,26,26,0.3);
+    backdrop-filter: blur(8px);
+  }
+
+  .nav-logo-wrap {
+    display: flex; align-items: center; gap: 0.7rem;
+    text-decoration: none;
+  }
+
+  /* SVG inline da logo na navbar */
+  .nav-logo-img {
+    height: 42px; width: auto; flex-shrink: 0;
+    border-radius: 3px;
+  }
+
+  .nav-logo-txt {
+    font-family: var(--fonte-titulo);
+    font-size: 1.6rem;
+    letter-spacing: 0.08em;
+    color: var(--offwhite);
+  }
+
+  .nav-links {
+    display: flex; gap: 2rem; list-style: none; align-items: center;
+  }
+
+  .nav-links a {
+    color: rgba(240,237,232,0.7); text-decoration: none;
+    font-size: 0.85rem; font-weight: 500;
+    letter-spacing: 0.05em; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--amarelo); }
+
+  .nav-cta {
+    background: var(--bordo); color: var(--offwhite) !important;
+    padding: 0.5rem 1.2rem; border-radius: 2px;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: #8a2020 !important; }
+
+  .hamburger {
+    display: none; flex-direction: column; gap: 5px;
+    cursor: pointer; background: none; border: none; padding: 4px;
+  }
+
+  .hamburger span {
+    display: block; width: 24px; height: 2px;
+    background: var(--offwhite); transition: 0.3s;
+  }
+
+  /* ── MENU MOBILE ── */
+  .mobile-menu {
+    display: none; position: fixed; inset: 0;
+    background: var(--preto); z-index: 99;
+    flex-direction: column; align-items: center; justify-content: center; gap: 2.5rem;
+  }
+
+  .mobile-menu.aberto { display: flex; }
+
+  .mobile-menu a {
+    font-family: var(--fonte-titulo); font-size: 2.5rem;
+    letter-spacing: 0.05em; color: var(--offwhite);
+    text-decoration: none; transition: color 0.2s;
+  }
+
+  .mobile-menu a:hover { color: var(--bordo); }
+
+  .mobile-fechar {
+    position: absolute; top: 1.5rem; right: 2rem;
+    background: none; border: 2px solid rgba(240,237,232,0.3);
+    color: var(--offwhite); font-size: 1.2rem;
+    cursor: pointer; width: 40px; height: 40px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 2px; transition: border-color 0.2s;
+    font-family: var(--fonte-corpo);
+  }
+
+  .mobile-fechar:hover { border-color: var(--bordo); color: var(--bordo); }
+
+  /* ── GERAL ── */
+  section { position: relative; z-index: 1; }
+
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+
+  .secao { padding: 6rem 0; }
+
+  .secao-tag {
+    display: inline-block; font-size: 0.7rem; font-weight: 600;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--bordo); margin-bottom: 1rem;
+  }
+
+  .secao-titulo {
+    font-family: var(--fonte-titulo);
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    line-height: 1.0; letter-spacing: 0.02em;
+    margin-bottom: 1rem; color: var(--offwhite);
+  }
+
+  .secao-subtitulo {
+    font-size: 1rem; color: rgba(240,237,232,0.55);
+    font-weight: 300; max-width: 540px;
+    line-height: 1.7; margin-bottom: 3rem;
+  }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh; display: flex; align-items: center;
+    padding: 8rem 0 5rem; position: relative; overflow: hidden;
+  }
+
+  .hero-bg-text {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--fonte-titulo);
+    font-size: clamp(8rem, 20vw, 18rem);
+    color: rgba(107,26,26,0.06);
+    letter-spacing: 0.1em; white-space: nowrap;
+    pointer-events: none; user-select: none;
+  }
+
+  .hero-inner {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 4rem; align-items: center;
+  }
+
+  .hero-tag {
+    display: inline-block; font-size: 0.75rem; font-weight: 600;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--amarelo); border: 1px solid var(--amarelo);
+    padding: 0.3rem 0.8rem; margin-bottom: 1.5rem;
+  }
+
+  .hero-titulo {
+    font-family: var(--fonte-titulo);
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    line-height: 0.92;
+    letter-spacing: 0.02em; color: var(--offwhite);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-titulo em {
+    font-style: normal; color: var(--bordo); display: block;
+    line-height: 0.92;
+  }
+
+  .hero-subtitulo {
+    font-size: 1.1rem; color: rgba(240,237,232,0.65);
+    font-weight: 300; line-height: 1.7;
+    margin-bottom: 2.5rem; max-width: 440px;
+  }
+
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+  .btn-primario {
+    display: inline-block; background: var(--bordo);
+    color: var(--offwhite); padding: 0.9rem 2rem;
+    font-family: var(--fonte-corpo); font-weight: 600;
+    font-size: 0.9rem; letter-spacing: 0.05em;
+    text-transform: uppercase; text-decoration: none;
+    border: 2px solid var(--bordo); cursor: pointer; transition: all 0.2s;
+  }
+
+  .btn-primario:hover { background: transparent; color: var(--bordo); }
+
+  .btn-secundario {
+    display: inline-block; background: transparent;
+    color: var(--offwhite); padding: 0.9rem 2rem;
+    font-family: var(--fonte-corpo); font-weight: 600;
+    font-size: 0.9rem; letter-spacing: 0.05em;
+    text-transform: uppercase; text-decoration: none;
+    border: 2px solid rgba(240,237,232,0.3); cursor: pointer; transition: all 0.2s;
+  }
+
+  .btn-secundario:hover { border-color: var(--offwhite); }
+
+  .hero-stats { display: flex; flex-direction: column; gap: 1.5rem; }
+
+  .stat-card {
+    background: var(--grafite);
+    border: 1px solid rgba(107,26,26,0.4);
+    padding: 1.5rem; position: relative; overflow: hidden;
+  }
+
+  .stat-card::before {
+    content: ''; position: absolute; top: 0; left: 0;
+    width: 3px; height: 100%; background: var(--bordo);
+  }
+
+  .stat-numero {
+    font-family: var(--fonte-titulo); font-size: 2.8rem;
+    line-height: 1; color: var(--amarelo); margin-bottom: 0.3rem;
+  }
+
+  .stat-desc { font-size: 0.9rem; color: rgba(240,237,232,0.6); font-weight: 300; }
+
+  /* ── COMO FUNCIONA ── */
+  #como-funciona { background: var(--grafite); }
+
+  .passos {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 0; margin-top: 3rem;
+  }
+
+  .passo {
+    padding: 2.5rem 2rem;
+    border-right: 1px solid rgba(107,26,26,0.3);
+    position: relative;
+  }
+
+  .passo:last-child { border-right: none; }
+
+  .passo-num {
+    font-family: var(--fonte-titulo); font-size: 5rem;
+    line-height: 1; color: rgba(107,26,26,0.2);
+    position: absolute; top: 1.5rem; right: 1.5rem;
+  }
+
+  .passo-titulo {
+    font-family: var(--fonte-titulo); font-size: 1.6rem;
+    letter-spacing: 0.03em; color: var(--offwhite);
+    margin-bottom: 0.8rem; margin-top: 1rem;
+  }
+
+  .passo-desc { font-size: 0.9rem; color: rgba(240,237,232,0.55); font-weight: 300; line-height: 1.7; }
+
+  .passo-icone {
+    width: 40px; height: 40px; background: var(--bordo);
+    display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;
+  }
+
+  .passo-icone svg { width: 20px; height: 20px; fill: none; stroke: var(--offwhite); stroke-width: 2; }
+
+  /* ── SERVIÇOS COM EXPANSÃO ── */
+  #servicos { background: var(--preto); }
+
+  .servicos-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1px; background: rgba(107,26,26,0.2); margin-top: 3rem;
+  }
+
+  .servico-card {
+    background: var(--preto); padding: 2rem 2rem 2rem 2rem;
+    cursor: pointer; position: relative;
+    transition: background 0.2s;
+    border-bottom: 1px solid rgba(107,26,26,0.2);
+  }
+
+  .servico-card:hover { background: var(--grafite); }
+  .servico-card.aberto { background: var(--grafite); }
+
+  .servico-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; }
+
+  .servico-num {
+    font-family: var(--fonte-titulo);
+    font-size: 3.5rem;
+    line-height: 1;
+    color: rgba(107,26,26,0.25);
+    margin-bottom: 0.6rem;
+    letter-spacing: 0.02em;
+  }
+
+  .servico-nome {
+    font-family: var(--fonte-titulo); font-size: 1.4rem;
+    letter-spacing: 0.03em; color: var(--offwhite); margin-bottom: 0.6rem;
+  }
+
+  .servico-desc-curta {
+    font-size: 0.88rem; color: rgba(240,237,232,0.5);
+    font-weight: 300; line-height: 1.7; margin-bottom: 1.2rem;
+  }
+
+  .servico-preco {
+    font-size: 0.75rem; color: var(--amarelo);
+    font-weight: 600; letter-spacing: 0.08em;
+    font-family: var(--fonte-titulo);
+  }
+
+  .servico-seta {
+    font-size: 1.6rem; color: var(--bordo);
+    transition: transform 0.3s;
+    margin-left: 1rem; flex-shrink: 0;
+    font-family: var(--fonte-titulo);
+    line-height: 1;
+    margin-top: 0.5rem;
+  }
+
+  .servico-card.aberto .servico-seta { transform: rotate(45deg); }
+
+  .servico-detalhe {
+    max-height: 0; overflow: hidden;
+    transition: max-height 0.4s ease, opacity 0.3s ease;
+    opacity: 0;
+  }
+
+  .servico-card.aberto .servico-detalhe { max-height: 500px; opacity: 1; }
+
+  .servico-detalhe-inner {
+    border-top: 1px solid rgba(107,26,26,0.3);
+    margin-top: 1rem; padding-top: 1.2rem;
+  }
+
+  .servico-detalhe-titulo {
+    font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--bordo); margin-bottom: 0.8rem;
+  }
+
+  .servico-detalhe-lista { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+
+  .servico-detalhe-lista li {
+    font-size: 0.88rem; color: rgba(240,237,232,0.7);
+    display: flex; align-items: flex-start; gap: 0.5rem;
+  }
+
+  .servico-detalhe-lista li::before { content: '▸'; color: var(--amarelo); font-size: 0.7rem; margin-top: 0.2rem; flex-shrink: 0; }
+
+  .servico-cta {
+    display: inline-block; margin-top: 1.2rem;
+    font-size: 0.8rem; font-weight: 600; letter-spacing: 0.05em;
+    text-transform: uppercase; color: var(--offwhite);
+    text-decoration: none; border-bottom: 1px solid var(--bordo);
+    padding-bottom: 2px; transition: color 0.2s;
+  }
+
+  .servico-cta:hover { color: var(--amarelo); }
+
+  /* ── CASES ── */
+  #cases { background: var(--grafite); }
+
+  .cases-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem; margin-top: 3rem;
+  }
+
+  .case-card {
+    background: var(--preto); border: 1px solid rgba(107,26,26,0.25);
+    padding: 2rem; position: relative; overflow: hidden; transition: border-color 0.2s;
+  }
+
+  .case-card:hover { border-color: var(--bordo); }
+
+  .case-nicho {
+    font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--bordo); margin-bottom: 0.8rem;
+  }
+
+  .case-titulo {
+    font-family: var(--fonte-titulo); font-size: 1.5rem;
+    letter-spacing: 0.02em; color: var(--offwhite);
+    margin-bottom: 0.8rem; line-height: 1.1;
+  }
+
+  .case-problema { font-size: 0.85rem; color: rgba(240,237,232,0.5); font-weight: 300; margin-bottom: 1.2rem; line-height: 1.6; }
+
+  .case-resultados { display: flex; flex-direction: column; gap: 0.5rem; }
+
+  .case-resultado {
+    font-size: 0.85rem; color: rgba(240,237,232,0.75);
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+
+  .case-resultado::before { content: '▸'; color: var(--amarelo); font-size: 0.7rem; }
+
+  .case-stack {
+    margin-top: 1.5rem; padding-top: 1rem;
+    border-top: 1px solid rgba(240,237,232,0.08);
+    font-size: 0.75rem; color: rgba(240,237,232,0.3); font-weight: 300;
+  }
+
+  .case-em-andamento {
+    display: inline-block; font-size: 0.65rem; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    background: rgba(232,197,71,0.12); color: var(--amarelo);
+    border: 1px solid rgba(232,197,71,0.3);
+    padding: 0.2rem 0.6rem; margin-bottom: 0.8rem;
+  }
+
+  /* ── SOBRE ── */
+  #sobre { background: var(--preto); }
+
+  .sobre-inner {
+    display: grid; grid-template-columns: 1fr 1.2fr;
+    gap: 5rem; align-items: center;
+  }
+
+  .sobre-manifesto {
+    font-family: var(--fonte-elegante); font-style: italic;
+    font-size: 1.15rem; color: rgba(240,237,232,0.7); line-height: 1.8;
+    border-left: 2px solid var(--bordo); padding-left: 1.5rem; margin: 2rem 0;
+  }
+
+  .sobre-texto { font-size: 0.95rem; color: rgba(240,237,232,0.6); line-height: 1.8; font-weight: 300; margin-bottom: 1rem; }
+
+  .pilares { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem; }
+
+  .pilar { border-top: 2px solid var(--bordo); padding-top: 1rem; }
+
+  .pilar-num { font-family: var(--fonte-titulo); font-size: 2rem; color: rgba(107,26,26,0.4); line-height: 1; margin-bottom: 0.3rem; }
+
+  .pilar-nome { font-family: var(--fonte-titulo); font-size: 1.1rem; letter-spacing: 0.05em; color: var(--offwhite); }
+
+  /* ── CTA ── */
+  #cta {
+    background: var(--bordo); padding: 5rem 0; text-align: center;
+    position: relative; overflow: hidden;
+  }
+
+  #cta::before {
+    content: 'MONTEJANO'; position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+    font-family: var(--fonte-titulo); font-size: clamp(5rem, 15vw, 12rem);
+    color: rgba(240,237,232,0.04); white-space: nowrap; pointer-events: none;
+  }
+
+  .cta-titulo {
+    font-family: var(--fonte-titulo); font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 1.0; letter-spacing: 0.03em;
+    margin-bottom: 1rem; color: var(--offwhite); position: relative; z-index: 1;
+  }
+
+  .cta-subtitulo {
+    font-size: 1rem; color: rgba(240,237,232,0.7); font-weight: 300;
+    margin-bottom: 2.5rem; position: relative; z-index: 1;
+  }
+
+  .cta-btn {
+    display: inline-block; background: var(--offwhite); color: var(--bordo);
+    padding: 1rem 2.5rem; font-family: var(--fonte-corpo); font-weight: 700;
+    font-size: 0.9rem; letter-spacing: 0.08em; text-transform: uppercase;
+    text-decoration: none; border: 2px solid var(--offwhite); transition: all 0.2s;
+    position: relative; z-index: 1;
+  }
+
+  .cta-btn:hover { background: transparent; color: var(--offwhite); }
+
+  /* ── LGPD BANNER ── */
+  .lgpd-banner {
+    position: fixed; bottom: 0; left: 0; width: 100%; z-index: 300;
+    background: var(--grafite); border-top: 1px solid rgba(107,26,26,0.4);
+    padding: 1rem 2rem; display: flex; align-items: center;
+    justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+  }
+
+  .lgpd-texto { font-size: 0.8rem; color: rgba(240,237,232,0.65); max-width: 700px; line-height: 1.5; }
+
+  .lgpd-texto a { color: var(--amarelo); text-decoration: underline; }
+
+  .lgpd-btn {
+    background: var(--bordo); color: var(--offwhite); border: none;
+    padding: 0.5rem 1.2rem; font-size: 0.8rem; font-weight: 600;
+    letter-spacing: 0.05em; text-transform: uppercase; cursor: pointer;
+    white-space: nowrap; border-radius: 2px; transition: background 0.2s;
+  }
+
+  .lgpd-btn:hover { background: #8a2020; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #0a0a0a; padding: 3rem 0;
+    border-top: 1px solid rgba(107,26,26,0.2);
+  }
+
+  .footer-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 1.5rem;
+  }
+
+  .footer-logo-wrap { display: flex; align-items: center; gap: 0.5rem; }
+  .footer-logo-img { height: 28px; width: auto; opacity: 0.85; }
+
+  .footer-logo { font-family: var(--fonte-titulo); font-size: 1.4rem; letter-spacing: 0.08em; color: var(--offwhite); }
+  .footer-logo span { color: var(--bordo); }
+
+  .footer-sub { font-size: 0.75rem; color: rgba(240,237,232,0.3); letter-spacing: 0.05em; margin-top: 0.2rem; }
+
+  .footer-links { display: flex; gap: 1.5rem; list-style: none; }
+
+  .footer-links a { color: rgba(240,237,232,0.4); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--offwhite); }
+
+  .footer-contato { font-size: 0.85rem; color: rgba(240,237,232,0.5); }
+  .footer-contato a { color: var(--amarelo); text-decoration: none; }
+
+  .footer-bottom {
+    margin-top: 2rem; padding-top: 1.5rem;
+    border-top: 1px solid rgba(240,237,232,0.05);
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 1rem;
+  }
+
+  .footer-copy { font-size: 0.75rem; color: rgba(240,237,232,0.25); }
+
+  .footer-legal { display: flex; gap: 1.5rem; }
+  .footer-legal a { font-size: 0.75rem; color: rgba(240,237,232,0.3); text-decoration: none; transition: color 0.2s; }
+  .footer-legal a:hover { color: rgba(240,237,232,0.6); }
+
+  /* ── BOT FLUTUANTE ── */
+  .bot-flutuante { position: fixed; bottom: 5.5rem; right: 2rem; z-index: 200; }
+
+  .bot-btn {
+    width: 56px; height: 56px; background: var(--bordo); border: none;
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s, transform 0.2s;
+    box-shadow: 0 4px 20px rgba(107,26,26,0.5);
+  }
+
+  .bot-btn:hover { background: #8a2020; transform: scale(1.05); }
+  .bot-btn svg { width: 24px; height: 24px; fill: none; stroke: var(--offwhite); stroke-width: 2; }
+
+  /* ── REVEAL ── */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.visivel { opacity: 1; transform: translateY(0); }
+
+  /* ── RESPONSIVO ── */
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .hero-stats { flex-direction: row; flex-wrap: wrap; }
+    .stat-card { flex: 1; min-width: 140px; }
+    .passos { grid-template-columns: 1fr; }
+    .passo { border-right: none; border-bottom: 1px solid rgba(107,26,26,0.3); }
+    .passo:last-child { border-bottom: none; }
+    .servicos-grid { grid-template-columns: 1fr; }
+    .cases-grid { grid-template-columns: 1fr; }
+    .sobre-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .footer-inner { flex-direction: column; text-align: center; }
+    .footer-links { justify-content: center; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+    .footer-legal { justify-content: center; }
+    .lgpd-banner { flex-direction: column; align-items: flex-start; }
+    .bot-flutuante { bottom: 7rem; }
+  }
+
+  /* ── DIAGNÓSTICO ── */
+  #como-funciona { background: var(--grafite); }
+
+  .diagnostico-box {
+    display: grid; grid-template-columns: 1fr 1.4fr;
+    gap: 4rem; align-items: start; margin-top: 3rem;
+  }
+
+  .diagnostico-texto p {
+    font-size: 1rem; color: rgba(240,237,232,0.65);
+    font-weight: 300; line-height: 1.8; margin-bottom: 1rem;
+  }
+
+  .diagnostico-destaque {
+    font-size: 0.95rem !important;
+    color: var(--offwhite) !important;
+    font-weight: 500 !important;
+    border-left: 2px solid var(--amarelo);
+    padding-left: 1rem;
+  }
+
+  .diagnostico-passos { display: flex; flex-direction: column; gap: 0; }
+
+  .dpasso {
+    display: flex; gap: 1.2rem; align-items: flex-start;
+    padding: 1.4rem 0;
+    border-bottom: 1px solid rgba(107,26,26,0.2);
+  }
+
+  .dpasso:last-child { border-bottom: none; }
+
+  .dpasso-num {
+    font-family: var(--fonte-titulo); font-size: 2rem;
+    color: rgba(107,26,26,0.35); line-height: 1;
+    flex-shrink: 0; width: 3rem; text-align: right;
+  }
+
+  .dpasso-titulo {
+    font-family: var(--fonte-titulo); font-size: 1.1rem;
+    letter-spacing: 0.04em; color: var(--offwhite);
+    margin-bottom: 0.3rem;
+  }
+
+  .dpasso-desc {
+    font-size: 0.85rem; color: rgba(240,237,232,0.5);
+    font-weight: 300; line-height: 1.6;
+  }
+
+  .diagnostico-manifesto {
+    margin-top: 3rem; padding: 2rem 2.5rem;
+    border: 1px solid rgba(107,26,26,0.3);
+    font-family: var(--fonte-elegante); font-style: italic;
+    font-size: 1.1rem; color: rgba(240,237,232,0.6);
+    line-height: 1.8; text-align: center;
+  }
+
+  .diagnostico-manifesto span {
+    color: rgba(240,237,232,0.4); font-size: 0.95rem;
+    display: block; margin-top: 0.5rem;
+  }
+
+  /* SERVIÇOS — layout por área (full width) */
+  .servicos-grid {
+    display: flex; flex-direction: column; gap: 0;
+    margin-top: 3rem; background: transparent;
+  }
+
+  .servico-card {
+    background: var(--preto); padding: 2rem 2.5rem;
+    cursor: pointer; position: relative;
+    transition: background 0.2s;
+    border: 1px solid rgba(107,26,26,0.2);
+    border-top: none;
+  }
+
+  .servico-card:first-child { border-top: 1px solid rgba(107,26,26,0.2); }
+  .servico-card:hover { background: var(--grafite); }
+  .servico-card.aberto { background: var(--grafite); border-color: rgba(107,26,26,0.5); }
+
+  .servico-header {
+    display: flex; justify-content: space-between;
+    align-items: center; gap: 1rem;
+  }
+
+  .servico-header-left { display: flex; align-items: center; gap: 1.5rem; flex: 1; }
+
+  .servico-num {
+    font-family: var(--fonte-titulo); font-size: 2.5rem;
+    line-height: 1; color: rgba(107,26,26,0.25);
+    letter-spacing: 0.02em; flex-shrink: 0; width: 3rem;
+  }
+
+  .servico-nome {
+    font-family: var(--fonte-titulo); font-size: 1.5rem;
+    letter-spacing: 0.03em; color: var(--offwhite);
+  }
+
+  .servico-desc-curta {
+    font-size: 0.88rem; color: rgba(240,237,232,0.45);
+    font-weight: 300; line-height: 1.5; margin-left: auto;
+    max-width: 340px; text-align: right;
+  }
+
+  .servico-preco {
+    font-size: 0.75rem; color: var(--amarelo);
+    font-weight: 600; letter-spacing: 0.08em;
+    font-family: var(--fonte-titulo); flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  .servico-seta {
+    font-size: 1.8rem; color: var(--bordo);
+    transition: transform 0.3s; flex-shrink: 0;
+    font-family: var(--fonte-titulo); line-height: 1;
+    width: 2rem; text-align: center;
+  }
+
+  .servico-card.aberto .servico-seta { transform: rotate(45deg); }
+
+  .servico-detalhe {
+    max-height: 0; overflow: hidden;
+    transition: max-height 0.5s ease, opacity 0.3s ease;
+    opacity: 0;
+  }
+
+  .servico-card.aberto .servico-detalhe { max-height: 800px; opacity: 1; }
+
+  .servico-detalhe-inner {
+    border-top: 1px solid rgba(107,26,26,0.2);
+    margin-top: 1.2rem; padding-top: 1.5rem;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .servico-detalhe-col { display: flex; flex-direction: column; gap: 0.8rem; }
+
+  .servico-detalhe-titulo {
+    font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--bordo); margin-bottom: 0.3rem;
+  }
+
+  .servico-detalhe-lista { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
+
+  .servico-detalhe-lista li {
+    font-size: 0.88rem; color: rgba(240,237,232,0.65);
+    display: flex; align-items: flex-start; gap: 0.5rem; font-weight: 300;
+  }
+
+  .servico-detalhe-lista li::before {
+    content: '▸'; color: var(--amarelo); font-size: 0.7rem;
+    margin-top: 0.2rem; flex-shrink: 0;
+  }
+
+  .servico-beneficios-lista li::before { color: var(--bordo) !important; }
+
+  .servico-cta {
+    display: inline-block; margin-top: 1rem;
+    font-size: 0.8rem; font-weight: 600; letter-spacing: 0.05em;
+    text-transform: uppercase; color: var(--offwhite);
+    text-decoration: none; border-bottom: 1px solid var(--bordo);
+    padding-bottom: 2px; transition: color 0.2s;
+    grid-column: 1 / -1;
+  }
+
+  .servico-cta:hover { color: var(--amarelo); }
+
+  /* Suporte — 3 planos */
+  .planos-grid {
+    display: grid; grid-template-columns: repeat(3,1fr);
+    gap: 1px; background: rgba(107,26,26,0.2);
+    margin-top: 1.5rem;
+  }
+
+  .plano-item {
+    background: var(--preto); padding: 1.5rem;
+  }
+
+  .plano-nome {
+    font-family: var(--fonte-titulo); font-size: 1.2rem;
+    letter-spacing: 0.05em; color: var(--offwhite);
+    margin-bottom: 0.8rem;
+  }
+
+  .plano-lista { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
+
+  .plano-lista li {
+    font-size: 0.82rem; color: rgba(240,237,232,0.55);
+    display: flex; align-items: flex-start; gap: 0.5rem; font-weight: 300;
+  }
+
+  .plano-lista li::before { content: '—'; color: var(--bordo); flex-shrink: 0; }
+
+  @media (max-width: 768px) {
+    .diagnostico-box { grid-template-columns: 1fr; gap: 2rem; }
+    .servico-header { flex-wrap: wrap; }
+    .servico-desc-curta { max-width: 100%; text-align: left; margin-left: 0; }
+    .servico-detalhe-inner { grid-template-columns: 1fr; }
+    .planos-grid { grid-template-columns: 1fr; }
+  }
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo-wrap" aria-label="Montejano - página inicial">
+    <img src="Design_sem_nome_20260601_224707_0000.png" alt="Montejano" class="nav-logo-img">
+  </a>
+  <ul class="nav-links" role="navigation" aria-label="Menu principal">
+    <li><a href="#como-funciona">Como funciona</a></li>
+    <li><a href="#servicos">Serviços</a></li>
+    <li><a href="#cases">Cases</a></li>
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="https://wa.me/5545998112533" target="_blank" rel="noopener noreferrer" class="nav-cta">Fale conosco</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MENU MOBILE -->
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Menu de navegação">
+  <button class="mobile-fechar" id="mobile-fechar" aria-label="Fechar menu">✕</button>
+  <a href="#como-funciona">Como funciona</a>
+  <a href="#servicos">Serviços</a>
+  <a href="#cases">Cases</a>
+  <a href="#sobre">Sobre</a>
+  <a href="https://wa.me/5545998112533" target="_blank" rel="noopener noreferrer" style="color: var(--amarelo);">Fale conosco →</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg-text" aria-hidden="true">MONTEJANO</div>
+  <div class="container">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-tag reveal">Automação · Dados · Sistemas · Web</div>
+        <h1 class="hero-titulo reveal">
+          SEU NEGÓCIO<br>
+          <em>NO PILOTO AUTOMÁTICO.</em>
+        </h1>
+        <p class="hero-subtitulo reveal">
+          Eliminamos tarefas repetitivas, organizamos processos e centralizamos informações. Sem enrolação. Sem contrato. Só resultado.
+        </p>
+        <div class="hero-btns reveal">
+          <a href="https://wa.me/5545998112533?text=Oi%2C%20quero%20automatizar%20meu%20neg%C3%B3cio" target="_blank" rel="noopener noreferrer" class="btn-primario">Conta o problema pra gente →</a>
+          <a href="#cases" class="btn-secundario">Ver resultados</a>
+        </div>
+      </div>
+      <div class="hero-stats reveal">
+        <div class="stat-card">
+          <div class="stat-numero">-80%</div>
+          <div class="stat-desc">tempo perdido com tarefas manuais</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-numero">~0</div>
+          <div class="stat-desc">erros no fechamento de caixa</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-numero">3h</div>
+          <div class="stat-desc">economizadas por dia em um restaurante</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIAGNÓSTICO -->
+<section id="como-funciona" class="secao">
+  <div class="container">
+    <span class="secao-tag reveal">Como começamos</span>
+    <h2 class="secao-titulo reveal">DIAGNÓSTICO<br><em style="font-style:normal;color:var(--bordo);">OPERACIONAL.</em></h2>
+    <p class="secao-subtitulo reveal">Antes de recomendar qualquer ferramenta, entendemos como sua empresa funciona.</p>
+    <div class="diagnostico-box reveal">
+      <div class="diagnostico-texto">
+        <p>Analisamos processos, identificamos gargalos e apontamos as melhorias que podem gerar mais resultado para o seu negócio.</p>
+        <p class="diagnostico-destaque">Se decidir seguir com a solução proposta, o valor do diagnóstico pode ser abatido do projeto.</p>
+        <a href="https://wa.me/5545998112533?text=Quero%20fazer%20um%20diagn%C3%B3stico%20operacional" target="_blank" rel="noopener noreferrer" class="btn-primario" style="margin-top:1.5rem;display:inline-block;">Quero fazer o diagnóstico →</a>
+      </div>
+      <div class="diagnostico-passos">
+        <div class="dpasso">
+          <div class="dpasso-num">01</div>
+          <div class="dpasso-info">
+            <div class="dpasso-titulo">ENTENDEMOS SUA OPERAÇÃO</div>
+            <div class="dpasso-desc">Conversamos sobre como sua empresa funciona hoje, quais ferramentas usa e onde sente mais dificuldade.</div>
+          </div>
+        </div>
+        <div class="dpasso">
+          <div class="dpasso-num">02</div>
+          <div class="dpasso-info">
+            <div class="dpasso-titulo">IDENTIFICAMOS GARGALOS</div>
+            <div class="dpasso-desc">Mapeamos os pontos onde tempo é desperdiçado, erros acontecem e informações se perdem.</div>
+          </div>
+        </div>
+        <div class="dpasso">
+          <div class="dpasso-num">03</div>
+          <div class="dpasso-info">
+            <div class="dpasso-titulo">CONSTRUÍMOS A SOLUÇÃO</div>
+            <div class="dpasso-desc">Desenvolvemos exatamente o que resolve o problema — sem tecnologia desnecessária.</div>
+          </div>
+        </div>
+        <div class="dpasso">
+          <div class="dpasso-num">04</div>
+          <div class="dpasso-info">
+            <div class="dpasso-titulo">ACOMPANHAMOS A EVOLUÇÃO</div>
+            <div class="dpasso-desc">Ficamos ao lado para garantir que tudo funcione e continue evoluindo junto com o negócio.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="diagnostico-manifesto reveal">
+      Nosso objetivo não é vender tecnologia.<br>
+      <span>Nosso objetivo é simplificar processos, reduzir erros e ajudar sua empresa a ganhar tempo e controle.</span>
+    </div>
+  </div>
+</section>
+
+<!-- SERVIÇOS -->
+<section id="servicos" class="secao">
+  <div class="container">
+    <span class="secao-tag reveal">O que fazemos</span>
+    <h2 class="secao-titulo reveal">PROBLEMAS REAIS.<br>SOLUÇÕES DIRETAS.</h2>
+    <p class="secao-subtitulo reveal">Cada área abaixo resolve um tipo de problema. Clique para entender o que fazemos e como podemos ajudar.</p>
+    <div class="servicos-grid reveal">
+
+      <!-- AUTOMAÇÕES -->
+      <div class="servico-card" role="button" tabindex="0" aria-expanded="false">
+        <div class="servico-header">
+          <div class="servico-header-left">
+            <div class="servico-num" aria-hidden="true">01</div>
+            <div class="servico-nome">AUTOMAÇÕES</div>
+          </div>
+          <div class="servico-desc-curta">Transforme tarefas repetitivas em processos automáticos.</div>
+          <span class="servico-seta" aria-hidden="true">+</span>
+        </div>
+        <div class="servico-detalhe">
+          <div class="servico-detalhe-inner">
+            <div class="servico-detalhe-col">
+              <div class="servico-detalhe-titulo">O que fazemos</div>
+              <ul class="servico-detalhe-lista">
+                <li>Bots para WhatsApp</li>
+                <li>Reservas automáticas</li>
+                <li>Agendamentos</li>
+                <li>Confirmações e lembretes</li>
+                <li>Fluxos automatizados</li>
+                <li>Integrações entre sistemas</li>
+                <li>Notificações automáticas</li>
+              </ul>
+            </div>
+            <div class="servico-detalhe-col">
+              <div class="servico-detalhe-titulo">Benefícios</div>
+              <ul class="servico-detalhe-lista servico-beneficios-lista">
+                <li>Menos trabalho manual</li>
+                <li>Menos erros operacionais</li>
+                <li>Mais agilidade</li>
+                <li>Atendimento mais eficiente</li>
+              </ul>
+            </div>
+            <a href="https://wa.me/5545998112533?text=Quero%20saber%20mais%20sobre%20automa%C3%A7%C3%B5es" target="_blank" rel="noopener noreferrer" class="servico-cta">Falar sobre automação →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- DADOS -->
+      <div class="servico-card" role="button" tabindex="0" aria-expanded="false">
+        <div class="servico-header">
+          <div class="servico-header-left">
+            <div class="servico-num" aria-hidden="true">02</div>
+            <div class="servico-nome">DADOS</div>
+          </div>
+          <div class="servico-desc-curta">Transforme informações em decisões.</div>
+          <span class="servico-seta" aria-hidden="true">+</span>
+        </div>
+        <div class="servico-detalhe">
+          <div class="servico-detalhe-inner">
+            <div class="servico-detalhe-col">
+              <div class="servico-detalhe-titulo">O que fazemos</div>
+              <ul class="servico-detalhe-lista">
+                <li>Dashboards personalizados</li>
+                <li>Relatórios automáticos</li>
+                <li>Organização de dados</li>
+                <li>Estruturação de informações</li>
+                <li>Migração de controles manuais</li>
+                <li>Indicadores de desempenho</li>
+              </ul>
+            </div>
+            <div class="servico-detalhe-col">
+              <div class="servico-detalhe-titulo">Benefícios</div>
+              <ul class="servico-detalhe-lista servico-beneficios-lista">
+                <li>Mais controle</li>
+                <li>Melhor tomada de decisão</li>
+                <li>Visualização clara dos resultados</li>
+                <li>Informações centralizadas</li>
+              </ul>
+            </div>
+            <a href="https://wa.me/5545998112533?text=Quero%20saber%20mais%20sobre%20dados%20e%20dashboards" target="_blank" rel="noopener noreferrer" class="servico-cta">Falar sobre dados →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- SISTEMAS -->
+      <div class="servico-card" role="button" tabindex="0" aria-expanded="false">
+        <div class="servico-header">
+          <div class="servico-header-left">
+            <div class="servico-num" aria-hidden="true">03</div>
+            <div class="servico-nome">SISTEMAS</div>
+          </div>
+          <div class="servico-desc-curta">Ferramentas desenvolvidas para a realidade da sua operação.</div>
+          <span class="servico-seta" aria-hidden="true">+</span>
+        </div>
+        <div class="servico-detalhe">
+          <div class="servico-detalhe-inner">
+            <div class="servico-detalhe-col">
+              <div class="servico-detalhe-titulo">O que fazemos</div>
+              <ul class="servico-detalhe-lista">
+                <li>Controle de caixa</li>
+                <li>Controle de estoque</li>
+                <li>Gestão de clientes</li>
+                <li>Gestão de reservas</li>
+                <li>Sistemas personalizados</li>
+                <li>Portais internos</li>
+                <li>Soluções para eventos</li>
+              </ul>
+            </div>
+            <div class="servico-detalhe-col">
+              <div class="servico-detalhe-titulo">Soluções para Eventos</div>
+              <ul class="servico-detalhe-lista">
+                <li>Caixa para eventos</li>
+                <li>Controle de vendas</li>
+                <li>Comandas digitais</li>
+                <li>Relatórios de fechamento</li>
+                <li>Gestão operacional temporária</li>
+              </ul>
+              <div class="servico-detalhe-titulo" style="margin-top:1rem;">Benefícios</div>
+              <ul class="servico-detalhe-lista servico-beneficios-lista">
+                <li>Processos organizados</li>
+                <li>Operação mais eficiente</li>
+                <li>Menos retrabalho</li>
+                <li>Mais controle do negócio</li>
+              </ul>
+            </div>
+            <a href="https://wa.me/5545998112533?text=Quero%20saber%20mais%20sobre%20sistemas" target="_blank" rel="noopener noreferrer" class="servico-cta">Falar sobre sistemas →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- SOLUÇÕES WEB -->
+      <div class="servico-card" role="button" tabindex="0" aria-expanded="false">
+        <div class="servico-header">
+          <div class="servico-header-left">
+            <div class="servico-num" aria-hidden="true">04</div>
+            <div class="servico-nome">SOLUÇÕES WEB</div>
+          </div>
+          <div class="servico-desc-curta">Sua presença digital conectada ao seu negócio.</div>
+          <span class="servico-seta" aria-hidden="true">+</span>
+        </div>
+        <div class="servico-detalhe">
+          <div class="servico-detalhe-inner">
+            <div class="servico-detalhe-col">
+              <div class="servico-detalhe-titulo">O que fazemos</div>
+              <ul class="servico-detalhe-lista">
+                <li>Sites institucionais</li>
+                <li>Landing Pages</li>
+                <li>Portais Web</li>
+                <li>Formulários inteligentes</li>
+                <li>Captação de leads</li>
+                <li>Integrações com WhatsApp</li>
+              </ul>
+            </div>
+            <div class="servico-detalhe-col">
+              <div class="servico-detalhe-titulo">Benefícios</div>
+              <ul class="servico-detalhe-lista servico-beneficios-lista">
+                <li>Mais credibilidade</li>
+                <li>Mais oportunidades de contato</li>
+                <li>Presença digital profissional</li>
+                <li>Integração com seus processos internos</li>
+              </ul>
+            </div>
+            <a href="https://wa.me/5545998112533?text=Quero%20saber%20mais%20sobre%20solu%C3%A7%C3%B5es%20web" target="_blank" rel="noopener noreferrer" class="servico-cta">Falar sobre presença digital →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- SUPORTE E EVOLUÇÃO -->
+      <div class="servico-card" role="button" tabindex="0" aria-expanded="false">
+        <div class="servico-header">
+          <div class="servico-header-left">
+            <div class="servico-num" aria-hidden="true">05</div>
+            <div class="servico-nome">SUPORTE E EVOLUÇÃO</div>
+          </div>
+          <div class="servico-desc-curta">Acompanhamento contínuo para garantir que suas soluções continuem funcionando e evoluindo.</div>
+          <span class="servico-seta" aria-hidden="true">+</span>
+        </div>
+        <div class="servico-detalhe">
+          <div class="servico-detalhe-inner" style="grid-template-columns:1fr;gap:1rem;">
+            <div class="planos-grid">
+              <div class="plano-item">
+                <div class="plano-nome">ESSENCIAL</div>
+                <ul class="plano-lista">
+                  <li>Suporte básico</li>
+                  <li>Correções simples</li>
+                  <li>Monitoramento</li>
+                </ul>
+              </div>
+              <div class="plano-item" style="border-left:2px solid var(--bordo);">
+                <div class="plano-nome">OPERACIONAL</div>
+                <ul class="plano-lista">
+                  <li>Ajustes periódicos</li>
+                  <li>Atendimento prioritário</li>
+                  <li>Melhorias operacionais</li>
+                </ul>
+              </div>
+              <div class="plano-item">
+                <div class="plano-nome">PARCEIRO</div>
+                <ul class="plano-lista">
+                  <li>Evolução contínua</li>
+                  <li>Novas automações</li>
+                  <li>Reuniões estratégicas</li>
+                  <li>Acompanhamento próximo</li>
+                </ul>
+              </div>
+            </div>
+            <a href="https://wa.me/5545998112533?text=Quero%20saber%20mais%20sobre%20planos%20de%20suporte" target="_blank" rel="noopener noreferrer" class="servico-cta" style="margin-top:0.5rem;">Falar sobre planos →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div style="text-align:center; margin-top: 2.5rem;">
+      <a href="https://wa.me/5545998112533?text=Quero%20um%20or%C3%A7amento" target="_blank" rel="noopener noreferrer" class="btn-primario reveal">Quero um orçamento →</a>
+    </div>
+  </div>
+</section>
+
+<!-- CASES -->
+<section id="cases" class="secao">
+  <div class="container">
+    <span class="secao-tag reveal">Resultados reais</span>
+    <h2 class="secao-titulo reveal">PROBLEMAS QUE<br>JÁ RESOLVEMOS.</h2>
+    <p class="secao-subtitulo reveal">Não é promessa. É o que já aconteceu.</p>
+    <div class="cases-grid">
+
+      <div class="case-card reveal">
+        <div class="case-em-andamento">Em andamento</div>
+        <div class="case-nicho">Restaurante</div>
+        <div class="case-titulo">AUTOMAÇÃO DE RESERVAS</div>
+        <div class="case-problema">Demanda alta de clientes mandando mensagens a qualquer hora — o maître perdia tempo respondendo uma a uma, o tempo todo, sem conseguir focar na operação.</div>
+        <div class="case-resultados">
+          <div class="case-resultado">100% das reservas via WhatsApp automático</div>
+          <div class="case-resultado">3 horas economizadas por dia na operação</div>
+          <div class="case-resultado">60% menos no-shows com lembrete automático</div>
+        </div>
+        <div class="case-stack">n8n · WhatsApp API</div>
+      </div>
+
+      <div class="case-card reveal">
+        <div class="case-nicho">Laboratório</div>
+        <div class="case-titulo">DASHBOARD UNIFICADO</div>
+        <div class="case-problema">Mais de 15 planilhas sem padrão. Horas toda semana só para consolidar dados e gerar um relatório.</div>
+        <div class="case-resultados">
+          <div class="case-resultado">80% menos tempo de consolidação</div>
+          <div class="case-resultado">1 painel substituiu todas as planilhas</div>
+          <div class="case-resultado">Atualização automática, sem intervenção</div>
+        </div>
+        <div class="case-stack">Power BI · Excel · Modelagem de dados</div>
+      </div>
+
+      <div class="case-card reveal">
+        <div class="case-nicho">Restaurante</div>
+        <div class="case-titulo">SISTEMA DE COMANDAS DIGITAL</div>
+        <div class="case-problema">Pedidos perdidos no papel, erros na cozinha, clientes esperando mais do que deveriam.</div>
+        <div class="case-resultados">
+          <div class="case-resultado">Zero pedidos perdidos</div>
+          <div class="case-resultado">40% menos tempo de atendimento</div>
+          <div class="case-resultado">Sistema 100% personalizado, sem mensalidade</div>
+        </div>
+        <div class="case-stack">Python · SQL · Docker · Sistema Web</div>
+      </div>
+
+      <div class="case-card reveal">
+        <div class="case-nicho">Evento</div>
+        <div class="case-titulo">CONTROLE DE CAIXA EM TEMPO REAL</div>
+        <div class="case-problema">Cálculos manuais geravam erros, fechamento demorava horas, sem visibilidade do faturamento durante o evento.</div>
+        <div class="case-resultados">
+          <div class="case-resultado">Zero erros no fechamento</div>
+          <div class="case-resultado">90% menos tempo para fechar o caixa</div>
+          <div class="case-resultado">Faturamento visível em tempo real</div>
+        </div>
+        <div class="case-stack">Python · Excel · Dashboard · Automação</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre" class="secao">
+  <div class="container">
+    <div class="sobre-inner">
+      <div>
+        <span class="secao-tag reveal">Quem está por trás</span>
+        <h2 class="secao-titulo reveal">FEITA POR QUEM APRENDEU DO JEITO DIFÍCIL.</h2>
+        <blockquote class="sobre-manifesto reveal">
+          "Grandes resultados não surgem do acaso, mas da construção consistente de sistemas sólidos, inteligentes e duradouros."
+        </blockquote>
+        <p class="sobre-texto reveal">A Montejano nasceu da trajetória de quem começou na bancada da assistência técnica, migrou para desenvolvimento e análise de dados, e aprendeu na prática que tecnologia sem propósito é só custo.</p>
+        <p class="sobre-texto reveal">Não somos uma software house. Somos uma construtora de estruturas digitais — feita para quem quer resolver problema de verdade, não comprar tecnologia que ninguém vai usar.</p>
+        <p class="sobre-texto reveal">Atendemos em São Paulo e em todo o Brasil de forma remota.</p>
+        <div style="margin-top:2rem;" class="reveal">
+          <a href="https://wa.me/5545998112533" target="_blank" rel="noopener noreferrer" class="btn-primario">Conta o problema pra gente →</a>
+        </div>
+      </div>
+      <div>
+        <div class="pilares reveal">
+          <div class="pilar"><div class="pilar-num">01</div><div class="pilar-nome">ESTRUTURA</div></div>
+          <div class="pilar"><div class="pilar-num">02</div><div class="pilar-nome">EVOLUÇÃO</div></div>
+          <div class="pilar"><div class="pilar-num">03</div><div class="pilar-nome">CONFIABILIDADE</div></div>
+          <div class="pilar"><div class="pilar-num">04</div><div class="pilar-nome">TRANSFORMAÇÃO</div></div>
+        </div>
+        <div style="margin-top: 3rem; background: var(--grafite); border: 1px solid rgba(107,26,26,0.3); padding: 2rem;" class="reveal">
+          <div style="font-size:0.7rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--bordo); margin-bottom:1rem;">Atendimento</div>
+          <div style="font-family:var(--fonte-titulo); font-size:1.2rem; color:var(--offwhite); margin-bottom:0.5rem;">SÃO PAULO · TODO O BRASIL</div>
+          <div style="font-size:0.85rem; color:rgba(240,237,232,0.5); margin-bottom:1.5rem;">Presencial em SP · Remoto para todo o Brasil</div>
+          <div style="font-size:0.7rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--bordo); margin-bottom:1rem;">Garantias</div>
+          <div style="display:flex; flex-direction:column; gap:0.5rem;">
+            <div style="font-size:0.85rem; color:rgba(240,237,232,0.7);">▸ 10 dias de ajustes inclusos</div>
+            <div style="font-size:0.85rem; color:rgba(240,237,232,0.7);">▸ Sem contrato de fidelidade</div>
+            <div style="font-size:0.85rem; color:rgba(240,237,232,0.7);">▸ Cancelamento com 30 dias de aviso</div>
+            <div style="font-size:0.85rem; color:rgba(240,237,232,0.7);">▸ PIX e cartão disponíveis</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="container">
+    <h2 class="cta-titulo">QUAL PROBLEMA<br>VOCÊ QUER RESOLVER?</h2>
+    <p class="cta-subtitulo">Conta pra gente. Em até 24h você tem um plano.</p>
+    <a href="https://wa.me/5545998112533?text=Quero%20resolver%20um%20problema%20na%20minha%20opera%C3%A7%C3%A3o" target="_blank" rel="noopener noreferrer" class="cta-btn">Falar com a Montejano →</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo-wrap">
+          <div class="footer-logo">MONTEJANO</div>
+        </div>
+        <div class="footer-sub">automação · dados · por Victória Montejano</div>
+      </div>
+      <ul class="footer-links">
+        <li><a href="#como-funciona">Como funciona</a></li>
+        <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#cases">Cases</a></li>
+        <li><a href="#sobre">Sobre</a></li>
+      </ul>
+      <div class="footer-contato">
+        São Paulo · Todo o Brasil<br>
+        <a href="https://wa.me/5545998112533" rel="noopener noreferrer">(45) 99811-2533</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 Montejano. Todos os direitos reservados.</div>
+      <div class="footer-legal">
+        <a href="#privacidade">Política de Privacidade</a>
+        <a href="#termos">Termos de Uso</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- BOT FLUTUANTE -->
+<div class="bot-flutuante">
+  <button class="bot-btn" id="bot-wpp" aria-label="Falar conosco pelo WhatsApp">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+  </button>
+</div>
+
+<!-- LGPD BANNER -->
+<div class="lgpd-banner" id="lgpd-banner" role="dialog" aria-label="Aviso de cookies e privacidade" style="display:none;">
+  <p class="lgpd-texto">
+    Usamos cookies essenciais para o funcionamento do site. Ao continuar navegando, você concorda com nossa
+    <a href="#privacidade">Política de Privacidade</a> em conformidade com a LGPD.
+  </p>
+  <button class="lgpd-btn" id="lgpd-aceitar">Entendido</button>
+</div>
+
+<script>
+  /* ── SEGURANÇA: sanitização de output (prevenção XSS para conteúdo dinâmico futuro) ── */
+  function sanitize(str) {
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
+  /* ── HONEYPOT: detecta bots ── */
+  window._botDetectado = false;
+  window.addEventListener('load', function() {
+    const hp = document.createElement('input');
+    hp.type = 'text';
+    hp.name = 'hp_field';
+    hp.style.cssText = 'position:absolute;left:-9999px;opacity:0;';
+    hp.setAttribute('tabindex', '-1');
+    hp.setAttribute('autocomplete', 'off');
+    hp.addEventListener('input', function() { window._botDetectado = true; });
+    document.body.appendChild(hp);
+  });
+
+  /* ── RATE LIMIT: evita spam de cliques em links externos ── */
+  var _cliques = {};
+  function rateLimit(id, ms) {
+    var agora = Date.now();
+    if (_cliques[id] && agora - _cliques[id] < ms) return false;
+    _cliques[id] = agora;
+    return true;
+  }
+
+  /* ── OPEN LINK SEGURO: valida URL antes de abrir ── */
+  function abrirLinkSeguro(url) {
+    if (window._botDetectado) return;
+    if (!rateLimit('wpp', 2000)) return;
+    var permitidos = ['wa.me', 'api.whatsapp.com'];
+    try {
+      var u = new URL(url);
+      if (permitidos.some(function(d){ return u.hostname === d || u.hostname.endsWith('.' + d); })) {
+        window.open(url, '_blank', 'noopener,noreferrer');
+      }
+    } catch(e) {}
+  }
+
+  /* ── BOT FLUTUANTE ── */
+  document.getElementById('bot-wpp').addEventListener('click', function() {
+    abrirLinkSeguro('https://wa.me/5545998112533?text=Oi%2C%20quero%20saber%20mais%20sobre%20a%20Montejano');
+  });
+
+  /* ── HAMBURGER ── */
+  var hamburger = document.getElementById('hamburger');
+  var mobileMenu = document.getElementById('mobile-menu');
+  var mobileFechar = document.getElementById('mobile-fechar');
+
+  function abrirMenu() {
+    mobileMenu.classList.add('aberto');
+    hamburger.setAttribute('aria-expanded', 'true');
+    mobileFechar.focus();
+    document.body.style.overflow = 'hidden';
+  }
+
+  function fecharMenu() {
+    mobileMenu.classList.remove('aberto');
+    hamburger.setAttribute('aria-expanded', 'false');
+    hamburger.focus();
+    document.body.style.overflow = '';
+  }
+
+  hamburger.addEventListener('click', abrirMenu);
+  mobileFechar.addEventListener('click', fecharMenu);
+
+  /* Fechar ao clicar fora */
+  mobileMenu.addEventListener('click', function(e) {
+    if (e.target === mobileMenu) fecharMenu();
+  });
+
+  /* Fechar com ESC */
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && mobileMenu.classList.contains('aberto')) fecharMenu();
+  });
+
+  mobileMenu.querySelectorAll('a').forEach(function(a) {
+    a.addEventListener('click', fecharMenu);
+  });
+
+  /* ── SERVIÇOS EXPANSÍVEIS ── */
+  document.querySelectorAll('.servico-card').forEach(function(card) {
+    function toggle() {
+      var aberto = card.classList.contains('aberto');
+      /* fecha todos */
+      document.querySelectorAll('.servico-card').forEach(function(c) {
+        c.classList.remove('aberto');
+        c.setAttribute('aria-expanded', 'false');
+      });
+      /* abre este se estava fechado */
+      if (!aberto) {
+        card.classList.add('aberto');
+        card.setAttribute('aria-expanded', 'true');
+      }
+    }
+    card.addEventListener('click', toggle);
+    card.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+    });
+  });
+
+  /* ── REVEAL ON SCROLL ── */
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        e.target.classList.add('visivel');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(function(el) { observer.observe(el); });
+
+  /* ── NAVBAR SCROLL ── */
+  window.addEventListener('scroll', function() {
+    var nav = document.querySelector('nav');
+    nav.style.borderBottomColor = window.scrollY > 50
+      ? 'rgba(107,26,26,0.6)' : 'rgba(107,26,26,0.3)';
+  }, { passive: true });
+
+  /* ── LGPD ── */
+  (function() {
+    var banner = document.getElementById('lgpd-banner');
+    var btn = document.getElementById('lgpd-aceitar');
+    try {
+      if (!localStorage.getItem('mj_lgpd')) {
+        banner.style.display = 'flex';
+      }
+    } catch(e) { banner.style.display = 'flex'; }
+    btn.addEventListener('click', function() {
+      try { localStorage.setItem('mj_lgpd', '1'); } catch(e) {}
+      banner.style.display = 'none';
+    });
+  })();
+</script>
+
+</body>
+</html>
