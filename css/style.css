@@ -681,6 +681,61 @@
   [data-tema="claro"] .produto-nome { color: #111111; }
   [data-tema="claro"] .produto-descricao { color: rgba(17,17,17,0.65); }
   [data-tema="claro"] .produto-entrega { color: rgba(17,17,17,0.5); }
+  [data-tema="claro"] #hero { background: #F0EDE8; }
+  [data-tema="claro"] .hero-titulo { color: #111111; }
+  [data-tema="claro"] .hero-subtitulo { color: rgba(17,17,17,0.65); }
+  [data-tema="claro"] .stat-desc { color: rgba(17,17,17,0.65); }
+  [data-tema="claro"] .btn-secundario { color: #111111; border-color: rgba(17,17,17,0.3); }
+  [data-tema="claro"] .btn-secundario:hover { border-color: #111111; }
+  [data-tema="claro"] .passo-titulo { color: #111111; }
+  [data-tema="claro"] .passo-desc { color: rgba(17,17,17,0.65); }
+  [data-tema="claro"] .passo-icone svg { stroke: #F0EDE8; }
+  [data-tema="claro"] .diagnostico-destaque { color: #111111 !important; }
+  [data-tema="claro"] .diagnostico-texto p { color: rgba(17,17,17,0.65); }
+  [data-tema="claro"] .diagnostico-manifesto span { color: rgba(17,17,17,0.65); }
+  [data-tema="claro"] .dpasso-desc { color: rgba(17,17,17,0.65); }
+  [data-tema="claro"] .sobre-manifesto { color: rgba(17,17,17,0.65); }
+  [data-tema="claro"] .sobre-texto { color: rgba(17,17,17,0.65); }
+  [data-tema="claro"] .pilar-nome { color: #111111; }
+  [data-tema="claro"] .servico-nome { color: #111111; }
+  [data-tema="claro"] .servico-desc-curta { color: rgba(17,17,17,0.65); }
+  [data-tema="claro"] .servico-detalhe-lista li { color: rgba(17,17,17,0.65); }
+  [data-tema="claro"] .servico-cta { color: #111111; }
+  [data-tema="claro"] .plano-nome { color: #111111; }
+  [data-tema="claro"] .plano-lista li { color: rgba(17,17,17,0.65); }
+  [data-tema="claro"] .mobile-fechar { color: #111111; border-color: rgba(17,17,17,0.3); }
+  [data-tema="claro"] .footer-sub { color: rgba(17,17,17,0.65); }
+  [data-tema="claro"] .footer-contato { color: rgba(17,17,17,0.65); }
+  [data-tema="claro"] .footer-links a { color: rgba(17,17,17,0.65); }
+  [data-tema="claro"] .footer-legal a { color: rgba(17,17,17,0.65); }
+  [data-tema="claro"] .footer-copy { color: rgba(17,17,17,0.65); }
+  [data-tema="claro"] .lgpd-texto { color: rgba(17,17,17,0.65); }
+  [data-tema="claro"] .lgpd-btn { color: #F0EDE8; }
+  [data-tema="claro"] .produtos-tab { color: rgba(17,17,17,0.65); }
+  [data-tema="claro"] .produto-entrega { color: rgba(17,17,17,0.65); }
+  [data-tema="claro"] [style*="color:var(--offwhite)"] { color: #111111 !important; }
+  [data-tema="claro"] [style*="color:rgba(240,237,232"] { color: rgba(17,17,17,0.65) !important; }
+  [data-tema="claro"] #sobre .diagnostico-box,
+  [data-tema="claro"] #sobre [style*="background"],
+  [data-tema="claro"] .sobre-card,
+  [data-tema="claro"] #sobre > .container > div > div:last-child > div:last-child {
+    background: #E6E2DC !important;
+    border-color: rgba(107,26,26,0.2) !important;
+    color: #111111 !important;
+  }
+  [data-tema="claro"] #sobre .sobre-card *,
+  [data-tema="claro"] #sobre > .container > div > div:last-child > div:last-child * {
+    color: #111111 !important;
+  }
+  [data-tema="claro"] footer { background: #E0DCD6 !important; }
+  [data-tema="claro"] footer * { color: rgba(17,17,17,0.6) !important; }
+  [data-tema="claro"] footer a { color: rgba(17,17,17,0.5) !important; }
+  [data-tema="claro"] footer a:hover { color: #111111 !important; }
+  [data-tema="claro"] footer a[href*="wa.me"] { color: #6B1A1A !important; }
+  [data-tema="claro"] .footer-bottom { border-top-color: rgba(17,17,17,0.08) !important; }
+  [data-tema="claro"] .lgpd-banner { background: #E6E2DC !important; border-top-color: rgba(107,26,26,0.2) !important; }
+  [data-tema="claro"] .lgpd-texto { color: rgba(17,17,17,0.65) !important; }
+  [data-tema="claro"] .lgpd-btn { background: #6B1A1A !important; color: #F0EDE8 !important; }
   .produtos-grid { grid-template-columns: 1fr; }
   .produto-card-destaque { grid-column: auto; padding: 1.8rem; }
 
