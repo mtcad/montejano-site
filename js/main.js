@@ -81,6 +81,32 @@
     a.addEventListener('click', fecharMenu);
   });
 
+  /* ── TEMA ── */
+  (function() {
+    var html = document.documentElement;
+    var toggleTema = document.getElementById('tema-toggle');
+
+    function aplicarTema(claro) {
+      if (claro) html.setAttribute('data-tema', 'claro');
+      else html.removeAttribute('data-tema');
+      toggleTema.setAttribute('aria-pressed', claro ? 'true' : 'false');
+      toggleTema.setAttribute('aria-label', claro ? 'Ativar modo escuro' : 'Ativar modo claro');
+    }
+
+    var temaSalvo = null;
+    try { temaSalvo = localStorage.getItem('mj_tema'); } catch(e) {}
+    aplicarTema(temaSalvo === 'claro');
+
+    toggleTema.addEventListener('click', function() {
+      var claro = html.getAttribute('data-tema') !== 'claro';
+      aplicarTema(claro);
+      try {
+        if (claro) localStorage.setItem('mj_tema', 'claro');
+        else localStorage.removeItem('mj_tema');
+      } catch(e) {}
+    });
+  })();
+
   /* ── SERVIÇOS EXPANSÍVEIS ── */
   document.querySelectorAll('.servico-card').forEach(function(card) {
     function toggle() {
@@ -125,6 +151,7 @@
   (function() {
     var banner = document.getElementById('lgpd-banner');
     var btn = document.getElementById('lgpd-aceitar');
+    var gerenciarCookies = document.getElementById('gerenciar-cookies');
     try {
       if (!localStorage.getItem('mj_lgpd')) {
         banner.style.display = 'flex';
@@ -133,5 +160,10 @@
     btn.addEventListener('click', function() {
       try { localStorage.setItem('mj_lgpd', '1'); } catch(e) {}
       banner.style.display = 'none';
+    });
+    gerenciarCookies.addEventListener('click', function(e) {
+      e.preventDefault();
+      try { localStorage.removeItem('mj_lgpd'); } catch(e) {}
+      banner.style.display = 'flex';
     });
   })();

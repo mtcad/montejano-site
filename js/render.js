@@ -60,6 +60,7 @@ function criarServicoCard(servico) {
   return card;
 }
 
+/*
 function criarCaseCard(item) {
   var card = document.createElement('div');
   card.className = 'case-card reveal';
@@ -78,6 +79,32 @@ function criarCaseCard(item) {
 
   return card;
 }
+*/
+
+function criarProdutoCard(produto, destaque) {
+  var card = document.createElement('article');
+  card.className = 'produto-card' + (destaque ? ' produto-card-destaque' : '');
+  card.innerHTML = (produto.subtitulo ? '<div class="produto-subtitulo">' + produto.subtitulo + '</div>' : '')
+    + '<h3 class="produto-nome">' + produto.nome + '</h3>'
+    + '<p class="produto-descricao">' + produto.descricao + '</p>'
+    + '<div class="produto-meta">'
+      + '<div class="produto-preco">' + produto.preco + '</div>'
+      + '<div class="produto-entrega">Entrega: ' + produto.entrega + '</div>'
+    + '</div>'
+    + '<a class="produto-cta" href="#" data-produto="' + produto.produto + '">Obter</a>';
+  return card;
+}
+
+function renderizarProdutos(tipo) {
+  var produtosLista = document.getElementById('produtos-lista');
+  if (!produtosLista) return;
+  produtosLista.innerHTML = '';
+  PRODUTOS
+    .filter(function(produto) { return tipo === 'consultoria' ? produto.destaque : true; })
+    .forEach(function(produto) {
+      produtosLista.appendChild(criarProdutoCard(produto, tipo === 'consultoria' || produto.destaque));
+    });
+}
 
 (function() {
   var servicosGrid = document.getElementById('servicos-grid');
@@ -87,10 +114,28 @@ function criarCaseCard(item) {
     });
   }
 
+  /*
   var casesGrid = document.getElementById('cases-grid');
   if (casesGrid) {
     CASES.forEach(function(item) {
       casesGrid.appendChild(criarCaseCard(item));
+    });
+  }
+  */
+
+  var produtosTabs = document.querySelectorAll('[data-produtos-tab]');
+  if (produtosTabs.length) {
+    renderizarProdutos('produtos');
+    produtosTabs.forEach(function(tab) {
+      tab.addEventListener('click', function() {
+        produtosTabs.forEach(function(item) {
+          item.classList.remove('ativo');
+          item.setAttribute('aria-selected', 'false');
+        });
+        tab.classList.add('ativo');
+        tab.setAttribute('aria-selected', 'true');
+        renderizarProdutos(tab.getAttribute('data-produtos-tab'));
+      });
     });
   }
 

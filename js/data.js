@@ -180,7 +180,41 @@ const SERVICOS = [
   }
 ];
 
-/* ── CASES ── */
+/* ── PRODUTOS ── */
+const PRODUTOS = [
+  {
+    nome: 'PLANILHA 1 — Controle Financeiro',
+    descricao: 'Organize receitas, despesas, contas a pagar e a receber e acompanhe o fluxo de caixa do seu negócio em um só lugar.',
+    preco: 'R$ 247,00',
+    entrega: 'Após confirmação de pagamento, via e-mail',
+    produto: 'planilha-financeiro'
+  },
+  {
+    nome: 'PLANILHA 2 — Controle de Estoque',
+    descricao: 'Acompanhe produtos, entradas e saídas e saiba quando é hora de repor seus produtos e insumos.',
+    preco: 'R$ 297,00',
+    entrega: 'Após confirmação de pagamento, via e-mail',
+    produto: 'planilha-estoque'
+  },
+  {
+    nome: 'PLANILHA 3 — Controle de Clientes',
+    descricao: 'Tenha seus clientes e oportunidades organizados, monitore os contatos, status e próximos passos sem depender de anotações espalhadas.',
+    preco: 'R$ 197,00',
+    entrega: 'Após confirmação de pagamento, via e-mail',
+    produto: 'planilha-clientes'
+  },
+  {
+    nome: 'ConsultorIA MONTEJANO',
+    subtitulo: 'Inteligência Artificial aplicada à sua operação',
+    descricao: 'Descubra onde a Inteligência Artificial pode realmente ajudar sua empresa — e como colocar isso em prática. Analisamos sua operação, identificamos oportunidades e mostramos como utilizar a IA para reduzir tarefas manuais, acelerar processos e melhorar a produtividade.',
+    preco: 'A partir de R$ 500,00',
+    entrega: 'Após confirmação de pagamento, via e-mail',
+    produto: 'consultoria-ia',
+    destaque: true
+  }
+];
+
+/* ── CASES ──
 const CASES = [
   {
     emAndamento: true,
@@ -228,3 +262,4 @@ const CASES = [
     stack: 'Python · Excel · Dashboard · Automação'
   }
 ];
+*/
