@@ -285,6 +285,13 @@
 
   .hero-stats { display: flex; flex-direction: column; gap: 1.5rem; }
 
+  .hero-montanha {
+    display: block; width: 380px; height: auto;
+    justify-self: center; opacity: 0.92;
+  }
+
+  .hero-montanha.reveal.visivel { opacity: 0.93; }
+
   .stat-card {
     background: var(--grafite);
     border: 1px solid rgba(107,26,26,0.4);
@@ -535,6 +542,7 @@
     .tema-toggle { margin-left: auto; }
     .hamburger { display: flex; }
     .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .hero-montanha { width: 200px; margin: 1.5rem auto 0; }
     .hero-stats { flex-direction: row; flex-wrap: wrap; }
     .stat-card { flex: 1; min-width: 140px; }
     .passos { grid-template-columns: 1fr; }
