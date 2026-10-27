@@ -48,7 +48,7 @@
 
   /* SVG inline da logo na navbar */
   .nav-logo-img {
-    height: 42px; width: auto; flex-shrink: 0;
+    height: 56px; width: auto; flex-shrink: 0;
     border-radius: 3px;
   }
 
@@ -145,6 +145,7 @@
   [data-tema="claro"] body { background: #F0EDE8; color: #111111; }
   [data-tema="claro"] nav { background: rgba(240,237,232,0.97); border-bottom-color: rgba(107,26,26,0.2); }
   [data-tema="claro"] .nav-links a { color: rgba(17,17,17,0.65); }
+  [data-tema="claro"] .nav-logo-img { background-color: var(--offwhite); border-radius: 4px; }
   [data-tema="claro"] .hamburger span { background: #111111; }
   [data-tema="claro"] .mobile-menu { background: #F0EDE8; }
   [data-tema="claro"] .mobile-menu a { color: #111111; }
@@ -286,11 +287,11 @@
   .hero-stats { display: flex; flex-direction: column; gap: 1.5rem; }
 
   .hero-montanha {
-    display: block; width: 380px; height: auto;
-    justify-self: center; opacity: 0.92;
+    display: block; width: 420px; max-width: 100%; height: auto;
+    justify-self: center; align-self: center; opacity: 0.92;
   }
 
-  .hero-montanha.reveal.visivel { opacity: 0.93; }
+  .hero-montanha.reveal.visivel { opacity: 0.92; }
 
   .stat-card {
     background: var(--grafite);
@@ -542,7 +543,7 @@
     .tema-toggle { margin-left: auto; }
     .hamburger { display: flex; }
     .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
-    .hero-montanha { width: 200px; margin: 1.5rem auto 0; }
+    .hero-montanha { width: 220px; margin: 1.5rem auto 0; }
     .hero-stats { flex-direction: row; flex-wrap: wrap; }
     .stat-card { flex: 1; min-width: 140px; }
     .passos { grid-template-columns: 1fr; }
